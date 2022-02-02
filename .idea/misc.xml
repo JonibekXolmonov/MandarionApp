@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/button_rounded.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/edittex_rounded_corner.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/edittext_rounded_corner.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/rounded_layout.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/selected_dot_indicator.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/tab_selector.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/universal_rounded_layout.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/drawable/unselected_dot_indicator.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/layout/activity_login.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/layout/activity_main.xml" value="0.1913265306122449" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/layout/item_pager.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/layout/login_layout.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MandarionApp/app/src/main/res/layout/register_layout.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
