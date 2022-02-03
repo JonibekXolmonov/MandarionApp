@@ -1,9 +1,12 @@
 package com.example.mandarionapp
 
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -22,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottom_sheet_login: CoordinatorLayout
     private lateinit var timer: Timer
 
+    private var mSensorManager: SensorManager? = null
+    private var mAccelerometer: Sensor? = null
+    private var mShakeDetector: ShakeDetector? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.wp_main)
         mainTab = findViewById(R.id.tab_main)
 
-        val btn_started: Button = findViewById(R.id.btn_started)
+//        val btn_started: Button = findViewById(R.id.btn_started)
         val btn_login: Button = findViewById(R.id.btn_login)
 
         bottom_sheet_register = findViewById(R.id.register_bottom_sheet)
@@ -51,20 +58,28 @@ class MainActivity : AppCompatActivity() {
         mainTab.setupWithViewPager(viewPager)
         addAutoScrollToViewPager()
 
-        btn_started.setOnClickListener {
-            if (sheetBehaviorReg.state == BottomSheetBehavior.STATE_HIDDEN) {
-                sheetBehaviorReg.state = BottomSheetBehavior.STATE_COLLAPSED
-            } else {
-//                sheetBehaviorReg.state = BottomSheetBehavior.STATE_EXPANDED
-                sheetBehaviorReg.state = BottomSheetBehavior.STATE_HIDDEN
-            }
+
+        fun initSensor() {
+            mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+            mAccelerometer = mSensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+            mShakeDetector = ShakeDetector()
+            mShakeDetector!!.setOnShakeListener(object : ShakeDetector.OnShakeListener {
+                override fun onShake(count: Int) {
+                    if (sheetBehaviorReg.state == BottomSheetBehavior.STATE_HIDDEN) {
+                        sheetBehaviorReg.state = BottomSheetBehavior.STATE_COLLAPSED
+                    } else {
+                        sheetBehaviorReg.state = BottomSheetBehavior.STATE_HIDDEN
+                    }
+                }
+            })
         }
+
+        initSensor()
 
         btn_login.setOnClickListener {
             if (sheetBehaviorLog.state == BottomSheetBehavior.STATE_HIDDEN) {
                 sheetBehaviorLog.state = BottomSheetBehavior.STATE_COLLAPSED
             } else {
-//                sheetBehaviorLog.state = BottomSheetBehavior.STATE_EXPANDED
                 sheetBehaviorLog.state = BottomSheetBehavior.STATE_HIDDEN
             }
         }
@@ -97,6 +112,21 @@ class MainActivity : AppCompatActivity() {
                 handler.post(update)
             }
         }, DELAY_MS, PERIOD_MS)
+    }
+
+    override fun onPause() { // Add the following line to unregister the Sensor Manager onPause
+        mSensorManager!!.unregisterListener(mShakeDetector)
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Add the following line to register the Session Manager Listener onResume
+        mSensorManager!!.registerListener(
+            mShakeDetector,
+            mAccelerometer,
+            SensorManager.SENSOR_DELAY_UI
+        )
     }
 
     private fun addPages(): ArrayList<Page> {

@@ -56,7 +56,7 @@
                 android:layout_marginHorizontal="50dp"
                 android:backgroundTint="@color/green"
                 android:paddingVertical="13dp"
-                android:text="Get started"
+                android:text="Shake to get started"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp"
